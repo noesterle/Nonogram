@@ -1,0 +1,7 @@
+version: "3"
+services:
+  filllintheblank:
+    image: noesterle/nonogram:latest
+    container_name: nonogram
+    ports:
+      - "8080:8080"
