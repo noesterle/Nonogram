@@ -14,10 +14,15 @@ def root():
 
 @bp.route("/play", methods={'GET'})
 def play():
-    table = create_table()
-    for row in table:
-        print(row)
-    return render_template("play.jinja", title="Play Nonogram", page="Play Nonogram")
+    size = 20
+    table = create_table(size)
+    count_of_col = count_columns(table, size)
+    count_of_col = [[''],count_of_col]
+    table.insert(0, count_of_col)
+    # for row in table:
+    #     for item in row:
+    #         print (str(item) + '\t')
+    return render_template("play.jinja", title="Play Nonogram", page="Play Nonogram", nonogram=table)
 
 # Nonogram Shape
 # [
@@ -26,16 +31,15 @@ def play():
 #     [[2,1], [True, True, False, True]]
 # ]
 
-def create_table():
-    col_len = 20
+def create_table(size):
     table = []
 
-    for i in range(0,col_len):
+    for i in range(0,size):
         row = []
         key = []
         gram = []
         count = 0
-        for j in range(0,col_len):
+        for j in range(0,size):
             option = random.choice([True,False])
             if option:
                 count += 1
@@ -50,5 +54,19 @@ def create_table():
 
     return table
 
-def count_columns(table):
-    pass
+def count_columns(table, size):
+    row_of_col_count = []
+    for i in range(0,size):
+        col_count = []
+        count = 0
+        for j in range(0,size):
+            option = table[j][1][i]
+            # print(option)
+            if option:
+                count += 1
+            else:
+                if count > 0:
+                    col_count.append(count)
+                count = 0
+        row_of_col_count.append(col_count)
+    return row_of_col_count

@@ -3,7 +3,7 @@
   --bg-color: #fff;
 }
 [data-theme="dark"] {
-  --font-color: #e1e1ff;
+  --font-color: #fff;
   --bg-color: #161625;
 }
 
@@ -29,5 +29,5 @@ table {
     border: 1px solid var(--font-color);
     text-align: left;
     padding: 8px;
-    color: var(--bg-color)
+    color: var(--font-color)
   }
