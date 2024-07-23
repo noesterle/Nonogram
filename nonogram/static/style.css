@@ -1,10 +1,16 @@
 :root {
   --font-color: black;
   --bg-color: #fff;
+  --cell-color: #fff;
+  --selected-font-color: #fff;
+  --selected-cell-color: black;
 }
 [data-theme="dark"] {
   --font-color: #fff;
   --bg-color: #161625;
+  --cell-color: #161625;
+  --selected-font-color: #161625;
+  --selected-cell-color: #fff
 }
 
 body {
@@ -12,12 +18,15 @@ body {
   background: var(--bg-color);
 }
 
-#revealed {
+#unselected {
   color: var(--font-color);
+  background-color: var(--cell-color);
 }
-#lose {
-  color: red
+#selected {
+  color: var(--selected-font-color);
+  background-color: var(--selected-cell-color);
 }
+
 
 table {
     font-family: arial, sans-serif;
@@ -25,9 +34,10 @@ table {
     width: 100%;
   }
   
-  td, th {
-    border: 1px solid var(--font-color);
-    text-align: left;
-    padding: 8px;
-    color: var(--font-color)
-  }
+td, th {
+  border: 1px solid var(--font-color);
+  text-align: left;
+  padding: 8px;
+  color: var(--font-color);
+  background-color: var(--cell-color);
+}

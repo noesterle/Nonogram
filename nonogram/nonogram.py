@@ -14,7 +14,7 @@ def root():
 
 @bp.route("/play", methods={'GET'})
 def play():
-    size = 20
+    size = 4 #20
     table = create_table(size)
     count_of_col = count_columns(table, size)
     count_of_col = [[''],count_of_col]
