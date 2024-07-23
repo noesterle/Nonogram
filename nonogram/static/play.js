@@ -1,4 +1,5 @@
 function getCellRow(td){
+    win = false;
     td= td? td.target:window.event? event.srcElement:'';
     var rc= [], pa= td.parentNode;
     if(pa.tagName== 'TR'){
@@ -14,8 +15,12 @@ function getCellRow(td){
                 cell.id = "selected"
             }
             // console.log(cell.id)
-            checkNonogram()
+            win = checkNonogram()
         }
+    }
+    if (win){
+        //Win condition.
+        if(!alert('Good job, you won the Nonogram! Click OK to play again.')){window.location.reload();}
     }
 }
 
@@ -31,20 +36,19 @@ function checkNonogram(){
             //iterate through cells
             //cells would be accessed using the "cell" variable assigned in the for loop
             // console.log("checking")
-            console.log(cell.getAttribute("id") + " " + cell.getAttribute("data"))
-            if ((cell.getAttribute("id") == "unselected" && cell.getAttribute("data") == "True") || (cell.getAttribute("id") == "selected" && cell.getAttribute("data") == "False")) {
-                console.log("Incorrect")
-                incorrect = true
-                if(incorrect){
-                    break;
+            if (cell.getAttribute("class") == "gram"){
+                // console.log(cell.getAttribute("class") + " " + cell.getAttribute("id") + " " + cell.getAttribute("data"))
+                if ((cell.getAttribute("id") == "unselected" && cell.getAttribute("data") == "True") || (cell.getAttribute("id") == "selected" && cell.getAttribute("data") == "False")) {
+                    incorrect = true
+                    if(incorrect){
+                        break;
+                    }
                 }
             }
-            //Win condition.
         }
         if(incorrect){
-            console.log("Incorrect")
             break;
         }
-   }
-   incorrect = false   
+    }
+    return !incorrect;
 }
