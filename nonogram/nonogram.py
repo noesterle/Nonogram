@@ -48,6 +48,8 @@ def create_table(size):
                     key.append(count)
                 count = 0
             gram.append(option)
+        if count > 0:
+            key.append(count)
         row.append(key)
         row.append(gram)
         table.append(row)
@@ -68,5 +70,7 @@ def count_columns(table, size):
                 if count > 0:
                     col_count.append(count)
                 count = 0
+        if count > 0:
+            col_count.append(count)
         row_of_col_count.append(col_count)
     return row_of_col_count
