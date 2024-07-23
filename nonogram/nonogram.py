@@ -14,7 +14,7 @@ def root():
 
 @bp.route("/play", methods={'GET'})
 def play():
-    size = 4 #20
+    size = 20
     table = create_table(size)
     count_of_col = count_columns(table, size)
     count_of_col = [[''],count_of_col]
@@ -50,6 +50,8 @@ def create_table(size):
             gram.append(option)
         if count > 0:
             key.append(count)
+        if len(key) == 0:
+            key.append(0)
         row.append(key)
         row.append(gram)
         table.append(row)
@@ -72,5 +74,7 @@ def count_columns(table, size):
                 count = 0
         if count > 0:
             col_count.append(count)
+        if len(col_count) == 0:
+            col_count.append(0)
         row_of_col_count.append(col_count)
     return row_of_col_count
