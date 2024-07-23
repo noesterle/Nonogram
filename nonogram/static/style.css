@@ -35,7 +35,7 @@ table {
   }
   
 td, th {
-  border: 1px solid var(--font-color);
+  border: 1px solid grey;
   text-align: left;
   padding: 8px;
   color: var(--font-color);
