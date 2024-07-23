@@ -27,7 +27,7 @@
                 <td class="row-key">{%for key in item %}{{key}} {% endfor %}</td> <!-- Concat all the row keys together horizontally in one cell -->
               {% else %}
                 {% for bool in item %}
-                  <td class="gram" id="unselected" data="{{bool}}">{{bool}}</td>
+                  <td class="gram" id="unselected" data="{{bool}}"> </td>
                 {% endfor %}
               {% endif %}
             {% endif %}
