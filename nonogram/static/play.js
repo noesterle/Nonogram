@@ -1,6 +1,7 @@
 function cellOnClick(event){
     win = false
     cell = event.target
+    console.log(event.type)
     if (cell.id == "selected") {
         cell.id = "unselected"
     }
@@ -14,11 +15,23 @@ function cellOnClick(event){
     }
 }
 
+function cellRightClick(event){
+    event.preventDefault()
+    cell = event.target
+    if (cell.innerText == ""){
+        cell.innerText = "X"
+    }
+    else {
+        cell.innerText = ""
+    }
+}
+
 window.onload= function(){
     var cells = document.querySelectorAll("#nonogram td");
     for (let cell of cells) {
         if (cell.classList.contains("gram")){
             cell.addEventListener("click", cellOnClick)
+            cell.addEventListener("contextmenu", cellRightClick)
         }
     }
 }
