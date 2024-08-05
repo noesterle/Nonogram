@@ -10,11 +10,15 @@ bp = Blueprint('play', __name__, url_prefix='/')
 
 @bp.route("/", methods={'GET'})
 def root():
-    return redirect("/play",code=302)
+    return redirect("/size",code=302)
 
-@bp.route("/play", methods={'GET'})
+@bp.route("/size", methods={"GET"})
+def enter_size():
+    return render_template("size.jinja", title="Play a Nonogram", page="Enter a Size for the Nonogram")
+
+@bp.route("/play", methods={'POST'})
 def play():
-    size = 20
+    size = int(request.form['size'])
     table = create_table(size)
     count_of_col = count_columns(table, size)
     count_of_col = [[''],count_of_col]

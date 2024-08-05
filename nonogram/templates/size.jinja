@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<title>{{ title }}</title>
+<head>
+  <h1>{{ page }}</h1>
+  <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<br>
+<div class="theme-switch-wrapper">
+    <label class="theme-switch" for="checkbox">
+        <input type="checkbox" id="checkbox" >Enable Dark Mode Input!</input>
+        <div class="slider round"></div>
+    </label>
+</div>
+<script src="{{ url_for('static', filename='theme.js') }}" type="text/javascript" ></script>
+<p>Enter a size for the Nonogram:</p>
+<form action="./play" method="post">
+    <input type="number" class="form-control" name="size" id="size" min=2 step=1 value=20/>
+    <button type="submit" class="btn btn-success gameButtons">Enter</button>
+</form>

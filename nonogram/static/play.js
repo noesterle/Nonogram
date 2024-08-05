@@ -20,7 +20,7 @@ function getCellRow(td){
     }
     if (win){
         //Win condition.
-        if(!alert('Good job, you won the Nonogram! Click OK to play again.')){window.location.reload();}
+        if(!alert('Good job, you won the Nonogram! Click OK to play again.')){document.location.href = '/size';}
     }
 }
 
