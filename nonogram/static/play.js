@@ -1,23 +1,13 @@
-function getCellRow(td){
-    win = false;
-    td= td? td.target:window.event? event.srcElement:'';
-    var rc= [], pa= td.parentNode;
-    if(pa.tagName== 'TR'){
-        rowIndex = pa.rowIndex
-        cellIndex = td.cellIndex
-        cell = document.getElementsByTagName('table')[0].rows[rowIndex].cells[cellIndex];
-        if (cell.getAttribute('class') == 'gram'){
-            // console.log(cell.id)
-            if (cell.id == "selected") {
-                cell.id = "unselected"
-            }
-            else {
-                cell.id = "selected"
-            }
-            // console.log(cell.id)
-            win = checkNonogram()
-        }
+function cellOnClick(event){
+    win = false
+    cell = event.target
+    if (cell.id == "selected") {
+        cell.id = "unselected"
     }
+    else {
+        cell.id = "selected"
+    }
+    win = checkNonogram()
     if (win){
         //Win condition.
         if(!alert('Good job, you won the Nonogram! Click OK to play again.')){document.location.href = '/size';}
@@ -25,7 +15,12 @@ function getCellRow(td){
 }
 
 window.onload= function(){
-    document.getElementsByTagName('table')[0].onclick=getCellRow;
+    var cells = document.querySelectorAll("#nonogram td");
+    for (let cell of cells) {
+        if (cell.classList.contains("gram")){
+            cell.addEventListener("click", cellOnClick)
+        }
+    }
 }
 
 function checkNonogram(){
